@@ -24,15 +24,6 @@ namespace BookHelper
             // TODO 3: Improve/fix the code here.
             var readPages = 0;
             var tempList = _readPages.ToList();
-            //foreach (var range in tempList)
-            //{
-            //    if (_readPages.Any(n => (range.To >= n.To && range.From <= n.From)))
-            //    {
-            //        _readPages.Remove(range);
-                    
-            //    }
-
-            //}
             foreach (var range in tempList)
             {
                 _readPages.Remove(range);
@@ -48,11 +39,8 @@ namespace BookHelper
 
             }
 
-
-            foreach (var item in _readPages)
-            {
-                readPages += (item.To - item.From + 1);
-            }
+            _readPages.ForEach(item =>
+                readPages += (item.To - item.From + 1));
 
             var leftPages = PagesCount - readPages;
             return leftPages;
