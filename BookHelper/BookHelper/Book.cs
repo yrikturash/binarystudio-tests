@@ -35,7 +35,9 @@ namespace BookHelper
             //}
             foreach (var range in tempList)
             {
+                _readPages.Remove(range);
                 var toCut = _readPages.Where(n => (n.To <= range.To && n.From <= range.From)).ToList();
+                _readPages.Add(range);
                 foreach (var item in toCut)
                 {
                     var tempItem = new PagesRange(item.From, range.To);
